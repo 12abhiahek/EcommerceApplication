@@ -2,7 +2,7 @@ package com.example.ecommerce.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.security.core.userdetails.User;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,4 +24,11 @@ public class CartEntity {
 
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Cartitem> items = new ArrayList<>();
+
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
+
+    private Integer quantity;
 }
